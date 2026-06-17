@@ -1,0 +1,118 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-background-end);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  min-height: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(191, 216, 255, 0.12), transparent 28rem),
+    radial-gradient(circle at 82% 4%, rgba(232, 238, 245, 0.08), transparent 24rem),
+    linear-gradient(
+      180deg,
+      var(--color-background-start) 0%,
+      var(--color-background-mid) 35%,
+      var(--color-background-low) 70%,
+      var(--color-background-end) 100%
+    );
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(191, 216, 255, 0.28);
+  color: var(--color-ink);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-color: rgba(191, 216, 255, 0.35);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--color-h1);
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.app-shell {
+  min-height: 100svh;
+  padding: 18svh var(--space-page-x);
+}
+
+[data-page-root] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0px);
+  transition:
+    opacity 680ms var(--ease-cinematic),
+    transform 900ms var(--ease-cinematic),
+    filter 900ms var(--ease-cinematic);
+}
+
+html:not([data-intro-ready="true"]) [data-page-root] {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.intro-frame {
+  max-width: 760px;
+}
+
+.intro-kicker {
+  margin: 0 0 16px;
+  color: var(--color-caption);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.intro-frame h1 {
+  color: var(--color-h1);
+  margin: 0;
+  font-size: clamp(2.25rem, 7vw, 6rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.intro-copy {
+  max-width: 540px;
+  margin: 24px 0 0;
+  color: var(--color-body-soft);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
